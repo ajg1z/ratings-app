@@ -1,22 +1,19 @@
 import type { NextPage } from "next";
-import { Htag, Button, Paragraph, Tag } from "../components";
+import { useEffect, useState } from "react";
+import { Htag, Button, Paragraph, Tag, Rating } from "../components";
+import { withLayout } from "../layout/layout";
+// import {} from "../layout";
 
 const Home: NextPage = () => {
+	const [rating, setRating] = useState(5);
 	return (
-		<div>
+		<>
 			<Htag title="HTag" tag="h1">
-				first tag{" "}
+				Rating
 			</Htag>
-			<Button arrow="down" variant="fill">
-				Купить курс
-			</Button>
-			<Button arrow="right" variant="outlined">
-				Купить курс
-			</Button>
-			<Paragraph>Text</Paragraph>
-			<Tag color="red">Text 2</Tag>
-		</div>
+			<Rating isEditable rating={rating} setRating={setRating} />
+		</>
 	);
 };
 
-export default Home;
+export default withLayout(Home);

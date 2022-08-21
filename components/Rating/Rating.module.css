@@ -1,0 +1,17 @@
+.star {
+	box-sizing: content-box;
+	padding-right: 5px;
+}
+
+.filled {
+	fill: var(--primary);
+}
+
+.container {
+	display: flex;
+	align-items: center;
+}
+
+.editable {
+	cursor: pointer;
+}

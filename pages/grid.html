@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<style>
+			.container {
+				width: 100wh;
+				height: 100vh;
+				background-color: grey;
+				display: grid;
+				gap: 10px;
+				height: 500px;
+				border: 1px solid black;
+				grid-auto-rows: 1fr;
+				grid-template-columns: repeat(3, 1fr);
+				grid-template-rows: repeat(3, 1fr);
+				grid-template:
+					"header header header"
+					"sidebar . body"
+					"footer . ."/ 1fr 1fr 1fr;
+			}
+			.container > div {
+				height: 85px;
+				font-size: 25px;
+				font-family: monospace;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background-color: navajowhite;
+			}
+			.header {
+				grid-area: header;
+			}
+			.footer {
+				grid-area: footer;
+			}
+			.body {
+				grid-area: body;
+			}
+			.sidebar {
+				grid-area: sidebar;
+			}
+		</style>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">header</div>
+			<div class="sidebar">sidebar</div>
+			<div class="body">body</div>
+			<div class="footer">footer</div>
+		</div>
+	</body>
+</html>
