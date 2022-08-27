@@ -1,0 +1,313 @@
+.product {
+	display: grid;
+	margin-bottom: 30px;
+	padding: 30px;
+	/* stylelint-disable-next-line max-line-length */
+	grid-template-columns:
+		[start] 70px [logoend] 30px [titlestart] calc(50% - 100px)
+		[middle] 1fr [pricestart] auto [priceend] 40px [creditstart] auto [creditend] 40px [ratestart] auto [end];
+}
+
+.logo {
+	grid-column: start / logoend;
+	grid-row: 1 / span 2;
+}
+
+.logoImage {
+	object-fit: cover;
+
+	border-radius: 5px;
+}
+
+.title {
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 27px;
+	align-self: flex-end;
+}
+
+.month {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+.oldPrice {
+	margin-left: 6px;
+	position: relative;
+	top: -2px;
+}
+
+.reviewBtn {
+	margin-left: 20px;
+}
+
+.price,
+.credit {
+	font-size: 20px;
+	line-height: 27px;
+	align-self: flex-end;
+}
+
+.rating {
+	align-self: flex-end;
+	position: relative;
+	top: -3px;
+}
+
+.rateTitle {
+	padding-top: 2px;
+}
+
+.priceTitle,
+.creditTitle,
+.rateTitle {
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 19px;
+}
+
+.advBlock p {
+	font-weight: 700;
+	line-height: 22px;
+	margin-bottom: 5px;
+}
+
+.title,
+.tags {
+	grid-column: titlestart/middle;
+}
+
+.tag {
+	margin-top: 10px;
+}
+
+.price,
+.priceTitle {
+	grid-column: pricestart/priceend;
+}
+
+.credit,
+.creditTitle {
+	grid-column: creditstart/creditend;
+}
+
+.rating,
+.rateTitle {
+	grid-column: ratestart / end;
+}
+
+.divider {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.divider,
+.description,
+.actions {
+	grid-column: start/end;
+}
+
+.description {
+	margin-bottom: 15px;
+}
+
+.feature {
+	grid-column: start / middle;
+}
+
+.advBlock {
+	grid-column: middle / end;
+	margin-left: 60px;
+}
+
+.advantages,
+.disadvantages {
+	padding-left: 15px;
+	border-left: 3px solid var(--green);
+}
+
+.disadvantages {
+	border-color: var(--red);
+	margin-top: 25px;
+}
+
+.characteristic {
+	display: grid;
+	align-items: flex-end;
+	grid-template-columns: auto 1fr auto;
+	margin-bottom: 10px;
+	column-gap: 10px;
+	font-size: 16px;
+}
+
+.ellipsis {
+	border-bottom: 2px dotted #c4c4c4;
+	margin-bottom: 4px;
+}
+
+.characteristicName {
+	font-weight: 700;
+}
+
+.characteristicValue {
+	font-weight: 500;
+}
+
+@media (max-width: 1330px) {
+	.product {
+		grid-template-columns: 70px 30px auto 40px auto 40px 1fr;
+		grid-template-areas:
+			"logo . title title title title title"
+			"logo . tags tags tags tags tags"
+			"price price price . credit . rating"
+			"priceTitle priceTitle priceTitle . creditTitle . rateTitle"
+			"hr hr hr hr hr hr hr"
+			"description description description description description description description"
+			"feature feature feature feature feature feature feature"
+			"advBlock advBlock advBlock advBlock advBlock advBlock advBlock"
+			"hr2 hr2 hr2 hr2 hr2 hr2 hr2"
+			"actions actions actions actions actions actions actions";
+	}
+
+	.rateTitle {
+		grid-area: rateTitle;
+	}
+
+	.creditTitle {
+		grid-area: creditTitle;
+	}
+
+	.actions {
+		grid-area: actions;
+	}
+
+	.credit {
+		grid-area: credit;
+	}
+
+	.rating {
+		grid-area: rating;
+	}
+
+	.price {
+		grid-area: price;
+	}
+
+	.description {
+		grid-area: description;
+	}
+
+	.feature {
+		grid-area: feature;
+	}
+
+	.advBlock {
+		grid-area: advBlock;
+		margin-top: 20px;
+		margin-left: 0;
+	}
+
+	.priceTitle {
+		grid-area: priceTitle;
+	}
+
+	.logo {
+		grid-area: logo;
+	}
+
+	.title {
+		grid-area: title;
+	}
+
+	.tags {
+		grid-area: tags;
+
+		margin-bottom: 20px;
+	}
+
+	.divider {
+		grid-area: hr;
+	}
+
+	.dividerSecond {
+		grid-area: hr2;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.product {
+		grid-template-columns: 70px 30px 1fr;
+		grid-template-areas:
+			"logo . title"
+			"logo . tags"
+			"priceTitle priceTitle price"
+			"creditTitle creditTitle credit"
+			"rateTitle rateTitle rating"
+			"hr hr hr"
+			"description description description"
+			"feature feature feature"
+			"advBlock advBlock advBlock"
+			"hr2 hr2 hr2"
+			"actions actions actions";
+	}
+	.price,
+	.credit {
+		margin-bottom: 10px;
+	}
+
+	.rating,
+	.price,
+	.credit {
+		justify-self: right;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.product {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"logo"
+			"title"
+			"tags"
+			"price"
+			"priceTitle"
+			"credit"
+			"creditTitle"
+			"rating"
+			"rateTitle"
+			"hr"
+			"description"
+			"feature"
+			"advBlock"
+			"hr2"
+			"actions";
+	}
+	.price,
+	.credit {
+		margin-bottom: 0;
+	}
+
+	.rating,
+	.price,
+	.credit {
+		justify-self: left;
+	}
+
+	.priceTitle,
+	.creditTitle {
+		margin-bottom: 15px;
+	}
+
+	.logo {
+		margin-bottom: 10px;
+	}
+
+	.actions button {
+		width: 100%;
+	}
+
+	.reviewBtn {
+		margin-left: 0;
+		margin-top: 10px;
+	}
+}

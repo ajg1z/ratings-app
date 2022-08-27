@@ -1,0 +1,27 @@
+.sortIcon {
+	position: absolute;
+	top: 3px;
+	left: -30px;
+
+	display: none;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: auto auto;
+	gap: 50px;
+	justify-items: center;
+
+	align-items: center;
+}
+
+.active .sortIcon {
+	display: inline-block;
+}
+
+.sortItem {
+	position: relative;
+
+	cursor: pointer;
+	white-space: nowrap;
+}

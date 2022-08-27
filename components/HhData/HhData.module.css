@@ -1,0 +1,97 @@
+.container {
+	display: grid;
+	grid-template-columns: 260px 1fr;
+	column-gap: 30px;
+
+	margin-bottom: 45px;
+}
+
+.count {
+	overflow: hidden;
+
+	padding: 20px 0 30px;
+
+	text-align: center;
+}
+
+.countValue {
+	color: var(--primary);
+
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 49px;
+}
+
+.title {
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 27px;
+}
+
+.filled circle {
+	fill: var(--red-light);
+}
+
+.salary {
+	display: grid;
+	align-items: center;
+
+	padding: 20px 0;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.salaryBlock {
+	text-align: center;
+
+	border-right: 1px solid var(--gray-light);
+}
+
+.salaryBlock:last-child {
+	border: none;
+}
+
+.level {
+	margin-bottom: 8px;
+
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 27px;
+}
+
+.salaryValue {
+	margin-bottom: 12px;
+
+	font-size: 26px;
+	font-weight: 700;
+	line-height: 35px;
+}
+
+.rate {
+	gap: 10px;
+
+	display: grid;
+	grid-template-columns: repeat(3, 20px);
+
+	justify-content: center;
+}
+
+@media (max-width: 1200px) {
+	.container {
+		grid-template-columns: 1fr;
+		row-gap: 20px;
+	}
+}
+
+@media (max-width: 640px) {
+	.salary {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+
+	.salaryBlock {
+		padding-bottom: 20px;
+
+		border-right: none;
+		border-bottom: 1px solid var(--gray-light);
+	}
+}

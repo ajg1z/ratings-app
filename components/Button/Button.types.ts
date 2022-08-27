@@ -7,6 +7,6 @@ export interface IButtinProps
 		HTMLButtonElement
 	> {
 	children: ReactNode;
-	variant: "fill" | "outlined";
+	variant?: "fill" | "outlined";
 	arrow?: "right" | "down" | "none";
 }

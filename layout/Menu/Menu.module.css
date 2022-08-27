@@ -32,35 +32,38 @@
 	margin-bottom: 10px;
 
 	cursor: pointer;
+	text-transform: uppercase;
 
 	color: var(--gray-dark);
 
 	font-size: 12px;
-	text-transform: uppercase;
 	font-weight: 300;
 	line-height: 16px;
 }
 
 .secondLevelWrapper {
+	margin-bottom: 20px;
 	margin-left: 12px;
-	padding-left: 32px;
-	border-left: 1px solid #dfdfdf;
 	padding-top: 15px;
 	padding-bottom: 4px;
-	margin-bottom: 20px;
+	padding-left: 32px;
+
+	border-left: 1px solid #dfdfdf;
 }
 
 .thirdLevel {
 	display: block;
 
 	margin-bottom: 10px;
+	padding-left: 10px;
+
+	cursor: pointer;
 
 	color: var(--gray-dark);
-	cursor: pointer;
+
 	font-size: 14px;
 	font-weight: 500;
 	line-height: 19px;
-	padding-left: 10px;
 }
 
 .thirdLevel:last-child {

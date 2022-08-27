@@ -6,7 +6,7 @@ import ArrowIcon from "./arrow.svg";
 
 export const Button: React.FC<IButtinProps> = ({
 	children,
-	variant,
+	variant = "fill",
 	className,
 	arrow = "none",
 	...args

@@ -1,0 +1,77 @@
+.header {
+	display: grid;
+	align-items: center;
+	grid-template-columns: 1fr auto;
+	justify-items: left;
+	gap: 20px 40px;
+
+	margin-bottom: 20px;
+}
+
+.tagTitle {
+	position: relative;
+	top: -5px;
+	margin-left: 10px;
+}
+
+.vacanciesTitle {
+	display: grid;
+	align-items: center;
+	justify-items: start;
+	grid-template-columns: auto 1fr;
+	gap: 20px;
+
+	margin-bottom: 25px;
+}
+
+.seoText {
+	line-height: 25px;
+	margin-bottom: 30px;
+
+	font-size: 18px;
+}
+
+.seoText p {
+	margin-bottom: 20px;
+}
+
+.seoText h1,
+.seoText h2,
+.seoText h3 {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.seoText li {
+	margin-bottom: 10px;
+
+	list-style: outside;
+}
+
+.seoText ul {
+	padding-left: 20px;
+}
+
+.tagsTitle {
+	margin-bottom: 20px;
+}
+
+.tags {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.tag {
+	display: inline-block;
+}
+
+@media screen and (max-width: 1070px) {
+	.header {
+		grid-template-columns: 1fr;
+	}
+	.sort {
+		justify-self: right;
+	}
+}

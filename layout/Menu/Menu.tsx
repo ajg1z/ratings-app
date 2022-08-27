@@ -12,7 +12,7 @@ import { IPageItem } from "../../interfaces/menu.interface";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const firstLevelMenu: IFirstLevelMenuItem[] = [
+export const FirstLevelMenu: IFirstLevelMenuItem[] = [
 	{
 		name: "Книги",
 		route: "books",
@@ -40,8 +40,9 @@ const firstLevelMenu: IFirstLevelMenuItem[] = [
 ];
 
 export const Menu = () => {
-	const { menu, firstCategory, setMenu } = useContext(AppContext);
+	const { menu, firstCategory, setMenu } = React.useContext(AppContext);
 	const { asPath } = useRouter();
+
 	const openSecondLevel = (secondLevel: string) => {
 		setMenu &&
 			setMenu(
@@ -55,7 +56,7 @@ export const Menu = () => {
 	const buildFirstLevel = () => {
 		return (
 			<>
-				{firstLevelMenu.map((m) => {
+				{FirstLevelMenu.map((m) => {
 					return (
 						<div className={styles.firstLevelWrapper} key={m.id}>
 							<Link href={`/${m.route}`}>

@@ -6,7 +6,7 @@ export interface IParagraphProps
 		HTMLParagraphElement
 	> {
 	size?: ParagraphType;
-	children: ReactNode;
+	children?: ReactNode;
 }
 
 export type ParagraphType = "large" | "small" | "medium";
