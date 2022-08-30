@@ -11,6 +11,7 @@
 .tagTitle {
 	position: relative;
 	top: -5px;
+
 	margin-left: 10px;
 }
 
@@ -21,14 +22,14 @@
 	grid-template-columns: auto 1fr;
 	gap: 20px;
 
-	margin-bottom: 25px;
+	margin: 25px 0;
 }
 
 .seoText {
-	line-height: 25px;
 	margin-bottom: 30px;
 
 	font-size: 18px;
+	line-height: 25px;
 }
 
 .seoText p {
@@ -71,6 +72,7 @@
 	.header {
 		grid-template-columns: 1fr;
 	}
+
 	.sort {
 		justify-self: right;
 	}

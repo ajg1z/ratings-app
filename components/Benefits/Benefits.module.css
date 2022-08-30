@@ -27,4 +27,8 @@
 	.benefitItem {
 		column-gap: 20px;
 	}
+
+	.benefitTitle {
+		font-size: 22px;
+	}
 }

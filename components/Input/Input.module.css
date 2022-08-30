@@ -2,6 +2,7 @@
 	padding: 7px 15px;
 
 	border: none;
+	width: 100%;
 
 	border-radius: 5px;
 
@@ -17,4 +18,20 @@
 
 .input::placeholder {
 	color: #a4a4a4;
+}
+
+.wrapper {
+	position: relative;
+}
+
+.error {
+	position: absolute;
+	left: 0;
+	top: 38px;
+	font-size: 14px;
+	color: var(--red);
+}
+
+.errorState {
+	outline: 1px solid var(--red);
 }

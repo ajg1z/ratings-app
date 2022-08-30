@@ -105,7 +105,7 @@ export const Menu = () => {
 
 	const buildThirdLevel = (pages: IPageItem[], route: string) => {
 		return pages.map((page, i) => (
-			<Link href={`/${route}/${page.alias}`}>
+			<Link key={page._id} href={`/${route}/${page.alias}`}>
 				<a
 					key={page._id}
 					className={cn(styles.thirdLevel, {

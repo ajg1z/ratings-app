@@ -1,0 +1,39 @@
+.review {
+	display: grid;
+	grid-template-columns: [start] auto 1fr auto auto [end];
+	align-items: center;
+	gap: 10px;
+
+	font-size: 14px;
+}
+
+.description {
+	grid-column: start / end;
+}
+
+.rating {
+	margin-left: 10px;
+}
+
+.name {
+	font-weight: 700;
+	line-height: 24px;
+}
+
+.title {
+	line-height: 19px;
+}
+
+@media screen and (max-width: 640px) {
+	.review {
+		grid-template-columns: [start] 30px [titlestart] auto [dateend] 1fr [end];
+	}
+
+	.titleBlock {
+		grid-column: titlestart / end;
+	}
+
+	.date {
+		grid-column: start / dateend;
+	}
+}

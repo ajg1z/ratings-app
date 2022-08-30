@@ -1,6 +1,7 @@
 .product {
 	display: grid;
-	margin-bottom: 30px;
+
+	margin-top: 30px;
 	padding: 30px;
 	/* stylelint-disable-next-line max-line-length */
 	grid-template-columns:
@@ -20,10 +21,11 @@
 }
 
 .title {
+	align-self: flex-end;
+
 	font-size: 20px;
 	font-weight: 600;
 	line-height: 27px;
-	align-self: flex-end;
 }
 
 .month {
@@ -32,9 +34,10 @@
 }
 
 .oldPrice {
-	margin-left: 6px;
 	position: relative;
 	top: -2px;
+
+	margin-left: 6px;
 }
 
 .reviewBtn {
@@ -43,19 +46,22 @@
 
 .price,
 .credit {
+	align-self: flex-end;
+
 	font-size: 20px;
 	line-height: 27px;
-	align-self: flex-end;
 }
 
 .rating {
-	align-self: flex-end;
 	position: relative;
 	top: -3px;
+
+	align-self: flex-end;
 }
 
 .rateTitle {
 	padding-top: 2px;
+	cursor: pointer;
 }
 
 .priceTitle,
@@ -67,9 +73,10 @@
 }
 
 .advBlock p {
+	margin-bottom: 5px;
+
 	font-weight: 700;
 	line-height: 22px;
-	margin-bottom: 5px;
 }
 
 .title,
@@ -117,32 +124,38 @@
 
 .advBlock {
 	grid-column: middle / end;
+
 	margin-left: 60px;
 }
 
 .advantages,
 .disadvantages {
 	padding-left: 15px;
+
 	border-left: 3px solid var(--green);
 }
 
 .disadvantages {
-	border-color: var(--red);
 	margin-top: 25px;
+
+	border-color: var(--red);
 }
 
 .characteristic {
 	display: grid;
 	align-items: flex-end;
 	grid-template-columns: auto 1fr auto;
+
 	margin-bottom: 10px;
 	column-gap: 10px;
+
 	font-size: 16px;
 }
 
 .ellipsis {
-	border-bottom: 2px dotted #c4c4c4;
 	margin-bottom: 4px;
+
+	border-bottom: 2px dotted #c4c4c4;
 }
 
 .characteristicName {
@@ -151,6 +164,10 @@
 
 .characteristicValue {
 	font-weight: 500;
+}
+
+.reviewDivider {
+	margin: 20px 0;
 }
 
 @media (max-width: 1330px) {
@@ -202,9 +219,9 @@
 	}
 
 	.advBlock {
-		grid-area: advBlock;
 		margin-top: 20px;
 		margin-left: 0;
+		grid-area: advBlock;
 	}
 
 	.priceTitle {
@@ -250,6 +267,7 @@
 			"hr2 hr2 hr2"
 			"actions actions actions";
 	}
+
 	.price,
 	.credit {
 		margin-bottom: 10px;
@@ -282,6 +300,7 @@
 			"hr2"
 			"actions";
 	}
+
 	.price,
 	.credit {
 		margin-bottom: 0;
@@ -307,7 +326,23 @@
 	}
 
 	.reviewBtn {
-		margin-left: 0;
 		margin-top: 10px;
+		margin-left: 0;
 	}
+}
+
+.reviews {
+	padding: 30px;
+}
+
+.closed {
+	overflow: hidden;
+	max-height: 0;
+
+	padding: 0;
+}
+
+.opened {
+	max-height: auto;
+	padding: 30px;
 }

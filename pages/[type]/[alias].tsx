@@ -11,6 +11,7 @@ import {
 import { IProductModel } from "../../interfaces/product.interface";
 import { FirstLevelMenu } from "../../layout/Menu/Menu";
 import { TopPageComponent } from "../../page-components/index";
+import { API } from "../../helpers/api";
 
 const TopPage = ({ firstCategory, page, products }: ITopPageProps) => {
 	return (
@@ -61,10 +62,9 @@ export const getStaticProps: GetStaticProps<ITopPageProps> = async ({
 	}
 
 	try {
-		const { data: menu } = await axios.post<IMenuItem[]>(
-			process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
-			{ firstCategory: firstCategoryItem.id }
-		);
+		const { data: menu } = await axios.post<IMenuItem[]>(API.topPage.find, {
+			firstCategory: firstCategoryItem.id,
+		});
 
 		if (!menu.length)
 			return {
@@ -72,11 +72,11 @@ export const getStaticProps: GetStaticProps<ITopPageProps> = async ({
 			};
 
 		const { data: page } = await axios.get<ITopPageModel>(
-			process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/byAlias/" + params.alias
+			API.topPage.byAlias + params.alias
 		);
 
 		const { data: products } = await axios.post<IProductModel[]>(
-			process.env.NEXT_PUBLIC_DOMAIN + "/api/product/find/",
+			API.product.find,
 			{
 				category: page.category,
 				limit: 10,

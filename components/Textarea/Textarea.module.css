@@ -14,9 +14,28 @@
 	box-shadow: 0 4px 4px var(--half-transparent-dark);
 
 	font-size: 16px;
+
 	line-height: 22px;
+
+	width: 100%;
 }
 
 .textarea::placeholder {
 	color: #a4a4a4;
+}
+
+.wrapper {
+	position: relative;
+}
+
+.errorState {
+	outline: 1px solid var(--red);
+}
+
+.error {
+	position: absolute;
+	left: 0;
+	top: 82px;
+	font-size: 14px;
+	color: var(--red);
 }

@@ -8,8 +8,8 @@ import {
 	ITopPageModel,
 	TopLevelCategory,
 } from "../../interfaces/top-page.interface";
-import { IProductModel } from "../../interfaces/product.interface";
 import { FirstLevelMenu } from "../../layout/Menu/Menu";
+import { API } from "../../helpers/api";
 
 const TypeRoot = ({ firstCategory, menu }: ITypeRootProps) => {
 	return (
@@ -48,10 +48,9 @@ export const getStaticProps: GetStaticProps<ITypeRootProps> = async ({
 	}
 
 	try {
-		const { data: menu } = await axios.post<IMenuItem[]>(
-			process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
-			{ firstCategory: firstLevelCategory.id }
-		);
+		const { data: menu } = await axios.post<IMenuItem[]>(API.topPage.find, {
+			firstCategory: firstLevelCategory.id,
+		});
 
 		return {
 			props: {

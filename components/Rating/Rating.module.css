@@ -10,8 +10,22 @@
 .container {
 	display: flex;
 	align-items: center;
+	position: relative;
 }
 
 .editable {
 	cursor: pointer;
+}
+
+.error svg {
+	stroke: var(--red);
+}
+
+.errorMessage {
+	position: absolute;
+	left: 0;
+	top: 25px;
+	font-size: 14px;
+	color: var(--red);
+	white-space: nowrap;
 }
