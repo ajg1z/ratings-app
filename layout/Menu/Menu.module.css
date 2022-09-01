@@ -6,7 +6,7 @@
 	display: grid;
 	align-items: center;
 
-	margin-top: 20px;
+	margin-bottom: 20px;
 
 	grid-template-columns: 24px 1fr;
 	gap: 20px;
@@ -23,14 +23,16 @@
 	color: var(--primary);
 }
 
+.firstLevelActive {
+	margin-bottom: 0;
+}
+
 .firstLevelActive svg,
 .firstLevel:hover svg {
 	fill: var(--primary);
 }
 
 .secondLevel {
-	margin-bottom: 10px;
-
 	cursor: pointer;
 	text-transform: uppercase;
 
@@ -42,13 +44,27 @@
 }
 
 .secondLevelWrapper {
-	margin-bottom: 20px;
 	margin-left: 12px;
-	padding-top: 15px;
-	padding-bottom: 4px;
 	padding-left: 32px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	overflow: hidden;
 
 	border-left: 1px solid #dfdfdf;
+}
+
+.secondLevelItem {
+	margin-bottom: 10px;
+
+	overflow: hidden;
+}
+
+.secondLevelItemActive {
+	margin-bottom: 0;
+}
+
+.secondLevelItem:last-child {
+	margin-bottom: 0;
 }
 
 .thirdLevel {
@@ -67,7 +83,7 @@
 }
 
 .thirdLevel:last-child {
-	margin-bottom: 20px;
+	margin-bottom: 0;
 }
 
 .thirdLevelActive,

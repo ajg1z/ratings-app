@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import { AppContext } from "../../context/app.context";
 import { TopLevelCategory } from "../../interfaces/top-page.interface";
 import { IFirstLevelMenuItem } from "./Menu.types";
@@ -11,6 +11,7 @@ import cn from "classnames";
 import { IPageItem } from "../../interfaces/menu.interface";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
 export const FirstLevelMenu: IFirstLevelMenuItem[] = [
 	{
@@ -42,6 +43,14 @@ export const FirstLevelMenu: IFirstLevelMenuItem[] = [
 export const Menu = () => {
 	const { menu, firstCategory, setMenu } = React.useContext(AppContext);
 	const { asPath } = useRouter();
+	const variantsSecondLevel = {
+		visible: {
+			marginTop: 10,
+			marginBottom: 10,
+			height: "auto",
+		},
+		hidden: { marginTop: 0, marginBottom: 0, height: 0 },
+	};
 
 	const openSecondLevel = (secondLevel: string) => {
 		setMenu &&
@@ -86,16 +95,27 @@ export const Menu = () => {
 					if (m.pages.map((p) => p.alias).includes(asPath.split("/")[2]))
 						m.isOpened = true;
 					return (
-						<div key={m._id.secondCategory}>
+						<div
+							className={cn(
+								styles.secondLevelItem,
+								m.isOpened && styles.secondLevelItemActive
+							)}
+							key={m._id.secondCategory}
+						>
 							<div
 								onClick={(e) => openSecondLevel(m._id.secondCategory)}
-								className={cn(styles.secondLevel, {
-									[styles.secondLevelActive]: m.isOpened,
-								})}
+								className={cn(styles.secondLevel)}
 							>
 								{m._id.secondCategory}
 							</div>
-							{m.isOpened && buildThirdLevel(m.pages, selectedMenu.route)}
+							<motion.div
+								layout
+								variants={variantsSecondLevel}
+								initial={m.isOpened ? "visible" : "hidden"}
+								animate={m.isOpened ? "visible" : "hidden"}
+							>
+								{buildThirdLevel(m.pages, selectedMenu.route)}
+							</motion.div>
 						</div>
 					);
 				})}

@@ -92,6 +92,7 @@ export const getStaticProps: GetStaticProps<ITopPageProps> = async ({
 			},
 		};
 	} catch (e) {
+		console.log("HERE");
 		console.warn(e);
 		return {
 			notFound: true,

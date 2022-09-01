@@ -5,6 +5,7 @@ import { Header } from "./Header/Header";
 import { Sidebar } from "./Sidebar/Sidebar";
 import { Footer } from "./Footer/Footer";
 import { AppContextProvider, IAppContext } from "../context/app.context";
+import { Up } from "../components";
 
 const Layout: React.FC<ILayoutProps> = ({ children }) => {
 	return (
@@ -13,6 +14,7 @@ const Layout: React.FC<ILayoutProps> = ({ children }) => {
 			<Sidebar className={styles.sidebar} />
 			<main className={styles.body}>{children}</main>
 			<Footer className={styles.footer} />
+			<Up />
 		</div>
 	);
 };

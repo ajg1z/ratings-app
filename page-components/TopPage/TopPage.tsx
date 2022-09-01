@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from "react";
+import React, { useCallback, useEffect, useReducer } from "react";
 import { HhData, Htag, Tag, Benefits, Sort, Product } from "../../components";
 import { SortEnum } from "../../components/Sort/Sort.types";
 import { TopLevelCategory } from "../../interfaces/top-page.interface";
@@ -18,6 +18,13 @@ export const TopPageComponent: React.FC<ITopPageComponentProps> = ({
 			sort: SortEnum.Rating,
 		}
 	);
+
+	useEffect(() => {
+		dispatchSort({
+			type: "reset",
+			payload: products,
+		});
+	}, [products]);
 
 	const setSort = useCallback((sort: SortEnum) => {
 		dispatchSort({ type: sort });
@@ -41,7 +48,7 @@ export const TopPageComponent: React.FC<ITopPageComponentProps> = ({
 			<div className={styles.products}>
 				{sortedProducts &&
 					sortedProducts.map((product) => {
-						return <Product key={product._id} product={product} />;
+						return <Product layout key={product._id} product={product} />;
 					})}
 			</div>
 

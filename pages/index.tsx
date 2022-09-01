@@ -1,15 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 import { useEffect, useState } from "react";
-import {
-	Htag,
-	Button,
-	Paragraph,
-	Tag,
-	Rating,
-	Input,
-	TextArea,
-	Search,
-} from "../components";
+import { Htag } from "../components";
 import { withLayout } from "../layout/layout";
 import axios from "axios";
 import { IMenuItem } from "../interfaces/menu.interface";

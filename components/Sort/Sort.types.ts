@@ -9,4 +9,5 @@ export interface ISortProps
 export enum SortEnum {
 	Rating,
 	Price,
+	SetNewProducts,
 }

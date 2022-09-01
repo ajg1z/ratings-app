@@ -1,13 +1,8 @@
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { useEffect, useState } from "react";
+import type { GetStaticPaths, GetStaticProps } from "next";
 import { withLayout } from "../../layout/layout";
 import axios from "axios";
 import { IMenuItem } from "../../interfaces/menu.interface";
-import {
-	ITopPageAdvantage,
-	ITopPageModel,
-	TopLevelCategory,
-} from "../../interfaces/top-page.interface";
+import { TopLevelCategory } from "../../interfaces/top-page.interface";
 import { FirstLevelMenu } from "../../layout/Menu/Menu";
 import { API } from "../../helpers/api";
 
