@@ -6,13 +6,37 @@ import { Sidebar } from "./Sidebar/Sidebar";
 import { Footer } from "./Footer/Footer";
 import { AppContextProvider, IAppContext } from "../context/app.context";
 import { Up } from "../components";
+import cn from "classnames";
 
 const Layout: React.FC<ILayoutProps> = ({ children }) => {
+	const [toContentTabIndex, setToContentTabIndex] = React.useState(false);
+	const bodyRef = React.useRef<HTMLDivElement | null>(null);
 	return (
 		<div className={styles.container}>
+			<a
+				onBlur={() => setToContentTabIndex(false)}
+				className={cn(styles.toContentTabIndex, {
+					[styles.visible]: toContentTabIndex,
+				})}
+				onKeyDown={(e) => {
+					if (e.code === "Space" || e.code === "Enter") {
+						e.preventDefault();
+						bodyRef.current?.focus();
+					}
+					setToContentTabIndex(false);
+				}}
+				onFocus={() => {
+					setToContentTabIndex(true);
+				}}
+				tabIndex={1}
+			>
+				Сказу к содержимому
+			</a>
 			<Header className={styles.header} />
 			<Sidebar className={styles.sidebar} />
-			<main className={styles.body}>{children}</main>
+			<div tabIndex={0} ref={bodyRef} className={styles.body}>
+				{children}
+			</div>
 			<Footer className={styles.footer} />
 			<Up />
 		</div>

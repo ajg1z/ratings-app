@@ -40,23 +40,25 @@
 
 	font-size: 12px;
 	font-weight: 300;
-	line-height: 16px;
+	line-height: 18px;
+	outline-offset: -1px;
 }
 
 .secondLevelWrapper {
+	overflow: hidden;
+
 	margin-left: 12px;
-	padding-left: 32px;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	overflow: hidden;
+	padding-left: 32px;
 
 	border-left: 1px solid #dfdfdf;
 }
 
 .secondLevelItem {
-	margin-bottom: 10px;
-
 	overflow: hidden;
+
+	margin-bottom: 10px;
 }
 
 .secondLevelItemActive {
@@ -80,6 +82,7 @@
 	font-size: 14px;
 	font-weight: 500;
 	line-height: 19px;
+	outline-offset: -1px;
 }
 
 .thirdLevel:last-child {

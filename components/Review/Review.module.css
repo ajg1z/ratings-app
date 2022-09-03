@@ -1,10 +1,12 @@
 .review {
 	display: grid;
-	grid-template-columns: [start] auto 1fr auto auto [end];
 	align-items: center;
-	gap: 10px;
+
+	margin-bottom: 20px;
 
 	font-size: 14px;
+	grid-template-columns: [start] auto 1fr auto auto [end];
+	gap: 10px;
 }
 
 .description {

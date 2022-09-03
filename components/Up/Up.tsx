@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import styles from "./Up.module.css";
-import LineIcon from "./line.svg";
 import useScrollY from "../../hooks/useScrollY";
 import { useAnimation, motion } from "framer-motion";
+import { ButtonIcon } from "../ButtonIcon/ButtonIcon";
 
 export const Up = () => {
 	const scrollY = useScrollY();
@@ -19,13 +19,13 @@ export const Up = () => {
 		});
 	};
 	return (
-		<motion.button
+		<motion.div
 			animate={controls}
 			initial={{ opacity: 0 }}
 			className={styles.up}
 			onClick={scrollToTop}
 		>
-			<LineIcon />
-		</motion.button>
+			<ButtonIcon variant="primary" icon="up" />
+		</motion.div>
 	);
 };

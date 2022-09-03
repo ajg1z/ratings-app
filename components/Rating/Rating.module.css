@@ -8,9 +8,10 @@
 }
 
 .container {
+	position: relative;
+
 	display: flex;
 	align-items: center;
-	position: relative;
 }
 
 .editable {
@@ -23,9 +24,12 @@
 
 .errorMessage {
 	position: absolute;
-	left: 0;
 	top: 25px;
-	font-size: 14px;
-	color: var(--red);
+	left: 0;
+
 	white-space: nowrap;
+
+	color: var(--red);
+
+	font-size: 14px;
 }

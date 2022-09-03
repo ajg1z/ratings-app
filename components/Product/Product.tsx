@@ -34,6 +34,17 @@ export const Product = motion(
 				});
 			};
 
+			const variantsReviewForm = {
+				visible: {
+					height: "auto",
+					overflow: "visible",
+				},
+				hidden: {
+					height: 0,
+					overflow: "hidden",
+				},
+			};
+
 			return (
 				<div className={className} {...args} ref={ref}>
 					<Card className={styles.product}>
@@ -136,27 +147,31 @@ export const Product = motion(
 							</Button>
 						</div>
 					</Card>
-					<Card
-						className={cn(styles.reviews, {
-							[styles.opened]: isReviewOpened,
-							[styles.closed]: !isReviewOpened,
-						})}
-						ref={reviewRef}
-						color="blue"
+					<motion.div
+						variants={variantsReviewForm}
+						initial={"hidden"}
+						animate={isReviewOpened ? "visible" : "hidden"}
 					>
-						{!product.reviews.length && (
-							<Paragraph>Здесь пока нету отзывов</Paragraph>
-						)}
-						{product.reviews.map((rev) => {
-							return (
-								<>
-									<Review key={rev._id} review={rev} />
-								</>
-							);
-						})}
-						<Divider className={styles.reviewDivider} />
-						<ReviewForm productId={product._id} />
-					</Card>
+						<Card
+							tabIndex={isReviewOpened ? 0 : -1}
+							className={styles.reviews}
+							ref={reviewRef}
+							color="blue"
+						>
+							{!product.reviews.length && (
+								<Paragraph>Здесь пока нету отзывов</Paragraph>
+							)}
+							{product.reviews.map((rev) => {
+								return (
+									<>
+										<Review key={rev._id} review={rev} />
+									</>
+								);
+							})}
+							<Divider className={styles.reviewDivider} />
+							<ReviewForm isOpened={isReviewOpened} productId={product._id} />
+						</Card>
+					</motion.div>
 				</div>
 			);
 		}

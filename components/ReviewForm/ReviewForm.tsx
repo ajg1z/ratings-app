@@ -16,9 +16,11 @@ import axios from "axios";
 import { API } from "../../helpers/api";
 import { ERROR_MESSAGES } from "../../helpers/error-messages";
 import cn from "classnames";
+import { motion } from "framer-motion";
 
 export const ReviewForm: React.FC<IReviewFormProps> = ({
 	productId,
+	isOpened,
 	...args
 }) => {
 	const {
@@ -30,7 +32,16 @@ export const ReviewForm: React.FC<IReviewFormProps> = ({
 	} = useForm<IReviewForm>();
 	const [error, setError] = useState<string>();
 	const [isSuccess, setIsSuccess] = useState<boolean>(false);
-
+	const variants = {
+		visible: {
+			height: "auto",
+			overflow: "visible",
+		},
+		hidden: {
+			height: 0,
+			overflow: "hidden",
+		},
+	};
 	const onSubmit = async (payload: IReviewForm) => {
 		setIsSuccess(false);
 		setError(undefined);
@@ -61,6 +72,7 @@ export const ReviewForm: React.FC<IReviewFormProps> = ({
 					error={errors.name}
 					className={styles.input}
 					placeholder="Имя"
+					tabIndex={isOpened ? 0 : -1}
 				/>
 				<Input
 					{...register("title", {
@@ -69,6 +81,7 @@ export const ReviewForm: React.FC<IReviewFormProps> = ({
 					error={errors.title}
 					className={styles.input}
 					placeholder="Загаловок отзыва"
+					tabIndex={isOpened ? 0 : -1}
 				/>
 				<div className={styles.rate}>
 					<span className={styles.label}>Оценка</span>
@@ -78,6 +91,7 @@ export const ReviewForm: React.FC<IReviewFormProps> = ({
 						control={control}
 						render={({ field }) => (
 							<Rating
+								tabIndex={isOpened ? 0 : -1}
 								rating={field.value}
 								isEditable
 								error={errors.rating}
@@ -94,9 +108,14 @@ export const ReviewForm: React.FC<IReviewFormProps> = ({
 					error={errors.description}
 					className={styles.textarea}
 					placeholder="Текст отзыва"
+					tabIndex={isOpened ? 0 : -1}
 				/>
 				<div className={styles.actions}>
-					<Button variant="fill" className={styles.send}>
+					<Button
+						tabIndex={isOpened ? 0 : -1}
+						variant="fill"
+						className={styles.send}
+					>
 						Отправить
 					</Button>
 					<Paragraph className={styles.note}>
@@ -105,13 +124,23 @@ export const ReviewForm: React.FC<IReviewFormProps> = ({
 					</Paragraph>
 				</div>
 			</div>
-			{error && (
+
+			<motion.div
+				variants={variants}
+				initial={"hidden"}
+				animate={error ? "visible" : "hidden"}
+			>
 				<div className={cn(styles.error, styles.panel)}>
 					<div className={styles.description}>{error}</div>
 					<CloseIcon onClick={() => setError("")} className={styles.close} />
 				</div>
-			)}
-			{isSuccess && (
+			</motion.div>
+
+			<motion.div
+				variants={variants}
+				initial={"hidden"}
+				animate={isSuccess ? "visible" : "hidden"}
+			>
 				<div className={cn(styles.success, styles.panel)}>
 					<div className={styles.title}>Отзыв успешно сохранен.</div>
 					<div className={styles.description}>
@@ -122,7 +151,7 @@ export const ReviewForm: React.FC<IReviewFormProps> = ({
 						className={styles.close}
 					/>
 				</div>
-			)}
+			</motion.div>
 		</form>
 	);
 };

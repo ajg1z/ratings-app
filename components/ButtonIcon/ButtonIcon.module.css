@@ -1,0 +1,21 @@
+.btn {
+	width: 40px;
+	height: 40px;
+
+	cursor: pointer;
+
+	border: none;
+
+	border-radius: 10px;
+	outline: none;
+
+	box-shadow: 0 4px 4px var(--half-transparent-dark);
+}
+
+.primary {
+	background-color: var(--primary);
+}
+
+.white {
+	background-color: var(--white);
+}

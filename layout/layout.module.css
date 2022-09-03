@@ -16,6 +16,22 @@
 	grid-area: body;
 }
 
+.toContentTabIndex {
+	position: absolute;
+	top: 0;
+	left: 100px;
+	background-color: var(--primary);
+	color: var(--white);
+	height: 0;
+	overflow: hidden;
+}
+
+.visible {
+	padding: 5px;
+	height: auto;
+	overflow: visible;
+}
+
 .footer {
 	grid-area: footer;
 }
@@ -35,7 +51,7 @@
 	}
 
 	.header {
-		display: block;
+		display: grid;
 	}
 
 	.container {
@@ -44,6 +60,7 @@
 			"header"
 			"body"
 			"footer";
+		row-gap: 15px;
 	}
 
 	.body {
