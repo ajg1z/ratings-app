@@ -2,8 +2,6 @@ import cn from "classnames";
 import React, { KeyboardEvent } from "react";
 import styles from "./Sort.module.css";
 import { ISortProps, SortEnum } from "./Sort.types";
-import SortIcon from "./Sort.svg";
-
 import { Keys } from "../../global-constans";
 import { Button } from "../Button/Button";
 

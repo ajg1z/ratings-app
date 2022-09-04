@@ -6,7 +6,6 @@ import RateIcon from "./star-rate.svg";
 import { priceSpace } from "../../helpers/functions";
 
 export const HhData: React.FC<IHhDataProps> = ({
-	_id,
 	count,
 	juniorSalary,
 	middleSalary,

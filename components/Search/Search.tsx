@@ -19,11 +19,15 @@ export const Search: React.FC<ISearchProps> = ({ className, ...args }) => {
 				q: search,
 			},
 		});
-		setSearch("");
 	};
 
 	return (
-		<form {...args} className={cn(className, styles.search)} role="search">
+		<form
+			onSubmit={(e) => e.preventDefault()}
+			{...args}
+			className={cn(className, styles.search)}
+			role="search"
+		>
 			<Input
 				className={styles.input}
 				value={search}

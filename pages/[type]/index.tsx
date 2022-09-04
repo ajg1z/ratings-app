@@ -7,7 +7,7 @@ import { FirstLevelMenu } from "../../layout/Menu/Menu";
 import { API } from "../../helpers/api";
 import Head from "next/head";
 
-const TypeRoot = ({ firstCategory, menu }: ITypeRootProps) => {
+const TypeRoot = ({ firstCategory }: ITypeRootProps) => {
 	return (
 		<>
 			<Head>
@@ -20,7 +20,7 @@ const TypeRoot = ({ firstCategory, menu }: ITypeRootProps) => {
 
 export default withLayout(TypeRoot);
 
-export const getStaticPaths: GetStaticPaths = async (ctx) => {
+export const getStaticPaths: GetStaticPaths = async () => {
 	return {
 		paths: FirstLevelMenu.map((menu) => `/${menu.route}`),
 		fallback: true,

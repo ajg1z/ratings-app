@@ -13,9 +13,6 @@
 	height: 30px;
 }
 
-.button:focus {
-}
-
 .button svg {
 	position: absolute;
 	top: 50%;

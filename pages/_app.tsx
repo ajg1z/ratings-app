@@ -3,13 +3,15 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { PublicUrlDomain } from "../global-constans";
 import ym, { YMInitializer } from "react-yandex-metrika";
+import Router from "next/router";
+
+Router.events.on("routeChangeComplete", (url) => {
+	if (typeof window !== "undefined") {
+		ym("hit", url);
+	}
+});
 
 function MyApp({ Component, pageProps, router }: AppProps) {
-	if (typeof window !== "undefined") {
-		router.events.on("routeChangeComplete", (url) => {
-			ym("hit", url);
-		});
-	}
 	return (
 		<>
 			<Head>

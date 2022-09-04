@@ -43,13 +43,13 @@ export const Rating = forwardRef(
 				} else {
 					setRating(rating < 5 ? rating + 1 : 5);
 				}
-				ratingArrayRef.current![rating]?.focus();
+				ratingArrayRef.current?.[rating]?.focus();
 			}
 
 			if (event.code === ArrowLeft || event.code === ArrowDown) {
 				event.preventDefault();
 				setRating(rating > 1 ? rating - 1 : 1);
-				ratingArrayRef.current![rating - 2]?.focus();
+				ratingArrayRef.current?.[rating - 2]?.focus();
 			}
 		};
 

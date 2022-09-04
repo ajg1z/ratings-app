@@ -1,10 +1,8 @@
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { useEffect, useState } from "react";
+import type { GetStaticPaths, GetStaticProps } from "next";
 import { withLayout } from "../../layout/layout";
 import axios from "axios";
 import { IMenuItem } from "../../interfaces/menu.interface";
 import {
-	ITopPageAdvantage,
 	ITopPageModel,
 	TopLevelCategory,
 } from "../../interfaces/top-page.interface";
@@ -13,8 +11,12 @@ import { FirstLevelMenu } from "../../layout/Menu/Menu";
 import { TopPageComponent } from "../../page-components/index";
 import { API } from "../../helpers/api";
 import Head from "next/head";
+import { NotFoundPage } from "../../page-components/404/404";
 
 const TopPage = ({ firstCategory, page, products }: ITopPageProps) => {
+	if (!page || !products) {
+		return <NotFoundPage />;
+	}
 	return (
 		<>
 			<Head>
@@ -36,9 +38,9 @@ const TopPage = ({ firstCategory, page, products }: ITopPageProps) => {
 
 export default withLayout(TopPage);
 
-export const getStaticPaths: GetStaticPaths = async (ctx) => {
+export const getStaticPaths: GetStaticPaths = async () => {
 	let paths: string[] = [];
-	for (let firstLevel of FirstLevelMenu) {
+	for (const firstLevel of FirstLevelMenu) {
 		const { data: menu } = await axios.post<IMenuItem[]>(
 			process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
 			{ firstCategory: firstLevel.id }
@@ -103,7 +105,6 @@ export const getStaticProps: GetStaticProps<ITopPageProps> = async ({
 			},
 		};
 	} catch (e) {
-		console.log("HERE");
 		console.warn(e);
 		return {
 			notFound: true,

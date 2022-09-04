@@ -20,16 +20,20 @@
 	position: absolute;
 	top: 0;
 	left: 100px;
-	background-color: var(--primary);
-	color: var(--white);
-	height: 0;
+
 	overflow: hidden;
+
+	height: 0;
+
+	color: var(--white);
+	background-color: var(--primary);
 }
 
 .visible {
-	padding: 5px;
-	height: auto;
 	overflow: visible;
+
+	height: auto;
+	padding: 5px;
 }
 
 .footer {

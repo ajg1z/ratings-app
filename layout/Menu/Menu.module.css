@@ -33,16 +33,17 @@
 }
 
 .secondLevel {
+	cursor: pointer;
 	text-transform: uppercase;
 
 	color: var(--gray-dark);
-	background-color: transparent;
 	border: none;
+	outline-offset: -1px;
+	background-color: transparent;
+
 	font-size: 12px;
 	font-weight: 300;
 	line-height: 18px;
-	outline-offset: -1px;
-	cursor: pointer;
 }
 
 .secondLevelWrapper {
@@ -78,11 +79,11 @@
 	cursor: pointer;
 
 	color: var(--gray-dark);
+	outline-offset: -1px;
 
 	font-size: 14px;
 	font-weight: 500;
 	line-height: 19px;
-	outline-offset: -1px;
 }
 
 .thirdLevelItem {

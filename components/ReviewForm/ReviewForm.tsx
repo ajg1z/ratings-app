@@ -58,7 +58,7 @@ export const ReviewForm: React.FC<IReviewFormProps> = ({
 				reset();
 				setIsSuccess(true);
 			} else setError(ERROR_MESSAGES.DEFAULT_MESSAGE);
-		} catch (e: any) {
+		} catch (e) {
 			setError(ERROR_MESSAGES.DEFAULT_MESSAGE);
 		}
 	};
