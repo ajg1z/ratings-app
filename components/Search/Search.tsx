@@ -23,19 +23,24 @@ export const Search: React.FC<ISearchProps> = ({ className, ...args }) => {
 	};
 
 	return (
-		<div {...args} className={cn(className, styles.search)}>
+		<form {...args} className={cn(className, styles.search)} role="search">
 			<Input
 				className={styles.input}
 				value={search}
 				onChange={(e) => setSearch(e.target.value)}
-				placeholder="Поиск..."
+				placeholder="Поиск"
 				onKeyDown={(e) => {
 					if (e.key === "Enter") goToSearch();
 				}}
 			/>
-			<Button onClick={goToSearch} className={styles.button} variant="fill">
+			<Button
+				aria-label="Поиск по сайту"
+				onClick={goToSearch}
+				className={styles.button}
+				variant="fill"
+			>
 				<SearchIcon />
 			</Button>
-		</div>
+		</form>
 	);
 };

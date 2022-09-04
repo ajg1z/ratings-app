@@ -29,6 +29,7 @@ export const ReviewForm: React.FC<IReviewFormProps> = ({
 		register,
 		reset,
 		control,
+		clearErrors,
 	} = useForm<IReviewForm>();
 	const [error, setError] = useState<string>();
 	const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -73,6 +74,7 @@ export const ReviewForm: React.FC<IReviewFormProps> = ({
 					className={styles.input}
 					placeholder="Имя"
 					tabIndex={isOpened ? 0 : -1}
+					aria-invalid={!!errors.name}
 				/>
 				<Input
 					{...register("title", {
@@ -82,6 +84,7 @@ export const ReviewForm: React.FC<IReviewFormProps> = ({
 					className={styles.input}
 					placeholder="Загаловок отзыва"
 					tabIndex={isOpened ? 0 : -1}
+					aria-invalid={!!errors.title}
 				/>
 				<div className={styles.rate}>
 					<span className={styles.label}>Оценка</span>
@@ -108,10 +111,13 @@ export const ReviewForm: React.FC<IReviewFormProps> = ({
 					error={errors.description}
 					className={styles.textarea}
 					placeholder="Текст отзыва"
+					aria-label="Текст отзыва"
 					tabIndex={isOpened ? 0 : -1}
+					aria-invalid={!!errors.description}
 				/>
 				<div className={styles.actions}>
 					<Button
+						onClick={() => clearErrors()}
 						tabIndex={isOpened ? 0 : -1}
 						variant="fill"
 						className={styles.send}
@@ -129,10 +135,18 @@ export const ReviewForm: React.FC<IReviewFormProps> = ({
 				variants={variants}
 				initial={"hidden"}
 				animate={error ? "visible" : "hidden"}
+				role={error ? "alert" : ""}
 			>
 				<div className={cn(styles.error, styles.panel)}>
 					<div className={styles.description}>{error}</div>
-					<CloseIcon onClick={() => setError("")} className={styles.close} />
+					<button
+						tabIndex={error ? 0 : -1}
+						className={styles.close}
+						aria-label="закрыть уведомление"
+						onClick={() => setError("")}
+					>
+						<CloseIcon />
+					</button>
 				</div>
 			</motion.div>
 
@@ -140,16 +154,21 @@ export const ReviewForm: React.FC<IReviewFormProps> = ({
 				variants={variants}
 				initial={"hidden"}
 				animate={isSuccess ? "visible" : "hidden"}
+				role={isSuccess ? "alert" : ""}
 			>
 				<div className={cn(styles.success, styles.panel)}>
 					<div className={styles.title}>Отзыв успешно сохранен.</div>
 					<div className={styles.description}>
 						Спасибо, отзыв скоро будет рассмотрен.
 					</div>
-					<CloseIcon
+					<button
+						tabIndex={isSuccess ? 0 : -1}
+						aria-label="закрыть уведомление"
 						onClick={() => setIsSuccess(false)}
 						className={styles.close}
-					/>
+					>
+						<CloseIcon />
+					</button>
 				</div>
 			</motion.div>
 		</form>

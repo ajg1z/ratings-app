@@ -12,6 +12,7 @@ import { IPageItem } from "../../interfaces/menu.interface";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import useAnnounce from "../../hooks/useAnnounce";
 
 export const FirstLevelMenu: IFirstLevelMenuItem[] = [
 	{
@@ -51,12 +52,15 @@ export const Menu = () => {
 		},
 		hidden: { marginTop: 0, marginBottom: 0, height: 0 },
 	};
-
+	const [setAnnounce, log] = useAnnounce({ close: "закрыто", open: "открыто" });
 	const openSecondLevel = (secondLevel: string) => {
 		setMenu &&
 			setMenu(
 				menu.map((m) => {
-					if (m._id.secondCategory === secondLevel) m.isOpened = !m.isOpened;
+					if (m._id.secondCategory === secondLevel) {
+						setAnnounce(m.isOpened ? "closed" : "opened");
+						m.isOpened = !m.isOpened;
+					}
 					return m;
 				})
 			);
@@ -71,10 +75,14 @@ export const Menu = () => {
 
 	const buildFirstLevel = () => {
 		return (
-			<>
+			<ul>
 				{FirstLevelMenu.map((m) => {
 					return (
-						<div className={styles.firstLevelWrapper} key={m.id}>
+						<li
+							aria-expanded={firstCategory === m.id}
+							className={styles.firstLevelWrapper}
+							key={m.id}
+						>
 							<Link href={`/${m.route}`}>
 								<a onKeyDown={(key) => handleChangeRoute(key, `/${m.route}`)}>
 									<div
@@ -88,16 +96,16 @@ export const Menu = () => {
 								</a>
 							</Link>
 							{m.id === firstCategory && buildSecondLevel(m)}
-						</div>
+						</li>
 					);
 				})}
-			</>
+			</ul>
 		);
 	};
 
 	const buildSecondLevel = (selectedMenu: IFirstLevelMenuItem) => {
 		return (
-			<div className={styles.secondLevelWrapper}>
+			<ul className={styles.secondLevelWrapper}>
 				{menu.map((m, i) => {
 					if (m.pages.map((p) => p.alias).includes(asPath.split("/")[2]))
 						m.isOpened = true;
@@ -109,20 +117,20 @@ export const Menu = () => {
 							)}
 							key={m._id.secondCategory}
 						>
-							<div
+							<button
+								aria-expanded={m.isOpened}
 								onKeyDown={(e) => {
 									if (e.code === "Enter" || e.code === "Space") {
 										openSecondLevel(m._id.secondCategory);
 										e.preventDefault();
 									}
 								}}
-								tabIndex={0}
 								onClick={() => openSecondLevel(m._id.secondCategory)}
 								className={cn(styles.secondLevel)}
 							>
 								{m._id.secondCategory}
-							</div>
-							<motion.div
+							</button>
+							<motion.ul
 								layout
 								variants={variantsSecondLevel}
 								initial={m.isOpened ? "visible" : "hidden"}
@@ -133,11 +141,11 @@ export const Menu = () => {
 									selectedMenu.route,
 									m.isOpened ?? false
 								)}
-							</motion.div>
+							</motion.ul>
 						</div>
 					);
 				})}
-			</div>
+			</ul>
 		);
 	};
 
@@ -146,21 +154,33 @@ export const Menu = () => {
 		route: string,
 		isOpened: boolean
 	) => {
-		return pages.map((page, i) => (
-			<Link key={page._id} href={`/${route}/${page.alias}`}>
-				<a
-					tabIndex={isOpened ? 0 : -1}
-					onKeyDown={(key) => handleChangeRoute(key, `/${route}/${page.alias}`)}
-					key={page._id}
-					className={cn(styles.thirdLevel, {
-						[styles.thirdLevelActive]: asPath.split("/")[2] === page.alias,
-					})}
-				>
-					{page.category}
-				</a>
-			</Link>
+		return pages.map((page) => (
+			<li className={styles.thirdLevelItem}>
+				<Link key={page._id} href={`/${route}/${page.alias}`}>
+					<a
+						aria-current={asPath.split("/")[2] === page.alias ? "page" : false}
+						tabIndex={isOpened ? 0 : -1}
+						onKeyDown={(key) =>
+							handleChangeRoute(key, `/${route}/${page.alias}`)
+						}
+						key={page._id}
+						className={cn(styles.thirdLevel, {
+							[styles.thirdLevelActive]: asPath.split("/")[2] === page.alias,
+						})}
+					>
+						{page.category}
+					</a>
+				</Link>
+			</li>
 		));
 	};
 
-	return <div className={styles.container}>{buildFirstLevel()}</div>;
+	return (
+		<nav role="navigation" className={styles.container}>
+			{buildFirstLevel()}
+			<span className="visual-hidden" role="log">
+				{log}
+			</span>
+		</nav>
+	);
 };

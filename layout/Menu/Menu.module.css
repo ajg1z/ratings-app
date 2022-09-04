@@ -33,15 +33,16 @@
 }
 
 .secondLevel {
-	cursor: pointer;
 	text-transform: uppercase;
 
 	color: var(--gray-dark);
-
+	background-color: transparent;
+	border: none;
 	font-size: 12px;
 	font-weight: 300;
 	line-height: 18px;
 	outline-offset: -1px;
+	cursor: pointer;
 }
 
 .secondLevelWrapper {
@@ -72,7 +73,6 @@
 .thirdLevel {
 	display: block;
 
-	margin-bottom: 10px;
 	padding-left: 10px;
 
 	cursor: pointer;
@@ -85,7 +85,11 @@
 	outline-offset: -1px;
 }
 
-.thirdLevel:last-child {
+.thirdLevelItem {
+	margin-bottom: 10px;
+}
+
+.thirdLevelItem:last-child {
 	margin-bottom: 0;
 }
 

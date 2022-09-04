@@ -8,3 +8,5 @@ export const Keys = {
 	Shift: "Shift",
 	Enter: "Enter",
 };
+
+export const PublicUrlDomain = process.env.NEXT_PUBLIC_DOMAIN;

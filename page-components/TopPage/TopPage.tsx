@@ -36,7 +36,12 @@ export const TopPageComponent: React.FC<ITopPageComponentProps> = ({
 				<Htag className={styles.title} tag="h1">
 					{page.title}
 					{sortedProducts && (
-						<Tag className={styles.tagTitle} color="grey" size="medium">
+						<Tag
+							aria-label={sortedProducts.length + " элементов"}
+							className={styles.tagTitle}
+							color="grey"
+							size="medium"
+						>
 							{sortedProducts.length}
 						</Tag>
 					)}
@@ -45,10 +50,17 @@ export const TopPageComponent: React.FC<ITopPageComponentProps> = ({
 				<Sort className={styles.sort} sort={sort} setSort={setSort} />
 			</div>
 
-			<div className={styles.products}>
+			<div role="list" className={styles.products}>
 				{sortedProducts &&
 					sortedProducts.map((product) => {
-						return <Product layout key={product._id} product={product} />;
+						return (
+							<Product
+								role="listitem"
+								layout
+								key={product._id}
+								product={product}
+							/>
+						);
 					})}
 			</div>
 

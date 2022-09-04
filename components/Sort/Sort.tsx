@@ -25,20 +25,22 @@ export const Sort: React.FC<ISortProps> = ({
 	return (
 		<div {...args} className={cn(className, styles.container)}>
 			<Button
-				aria-label="сортировка"
+				aria-label="сортировка по рейтингу"
 				className={cn(styles.sortItem, {
 					[styles.active]: sort === SortEnum.Rating,
 				})}
+				aria-selected={sort === SortEnum.Rating}
 				onKeyDown={(e) => handleKey(e, SortEnum.Rating)}
 				onClick={() => setSort(SortEnum.Rating)}
 			>
 				По рейтингу
 			</Button>
 			<Button
-				aria-label="сортировка"
+				aria-label="сортировка по цене"
 				className={cn(styles.sortItem, {
 					[styles.active]: sort === SortEnum.Price,
 				})}
+				aria-selected={sort === SortEnum.Price}
 				onKeyDown={(e) => handleKey(e, SortEnum.Price)}
 				onClick={() => setSort(SortEnum.Price)}
 			>

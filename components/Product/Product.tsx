@@ -60,18 +60,28 @@ export const Product = motion(
 						</div>
 						<div className={styles.title}>{product.title}</div>
 						<div className={styles.price}>
-							{priceSpace(product.price)}
+							<span>
+								<span className="visual-hidden">цена </span>
+								{priceSpace(product.price)}
+							</span>
 							{product.oldPrice && (
 								<Tag className={styles.oldPrice} color="green">
+									<span className="visual-hidden">скидка</span>
 									{priceSpace(product.price - product.oldPrice)}
 								</Tag>
 							)}
 						</div>
 						<div className={styles.credit}>
+							<span className="visual-hidden">кредит в месяц</span>
 							{priceSpace(product.credit)}
-							<span className={styles.month}> /мес</span>
+							<span aria-hidden className={styles.month}>
+								/мес
+							</span>
 						</div>
 						<div className={styles.rating}>
+							<span className="visual-hidden">
+								рейтинг {product.reviewAvr ?? product.initialRating}
+							</span>
 							<Rating rating={product.reviewAvr ?? product.initialRating} />
 						</div>
 						<div className={styles.tags}>
@@ -88,8 +98,12 @@ export const Product = motion(
 								);
 							})}
 						</div>
-						<div className={styles.priceTitle}>цена</div>
-						<div className={styles.creditTitle}>кредит</div>
+						<div aria-hidden className={styles.priceTitle}>
+							цена
+						</div>
+						<div aria-hidden className={styles.creditTitle}>
+							кредит
+						</div>
 						<div className={styles.rateTitle}>
 							<a href="#ref" onClick={scrolltoReviews}>
 								{product.reviewCount + " "}
@@ -142,6 +156,7 @@ export const Product = motion(
 								onClick={toggleReviews}
 								variant="outlined"
 								arrow={isReviewOpened ? "down" : "right"}
+								aria-expanded={isReviewOpened}
 							>
 								Читать отзывы
 							</Button>

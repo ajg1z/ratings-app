@@ -12,14 +12,25 @@ import { IProductModel } from "../../interfaces/product.interface";
 import { FirstLevelMenu } from "../../layout/Menu/Menu";
 import { TopPageComponent } from "../../page-components/index";
 import { API } from "../../helpers/api";
+import Head from "next/head";
 
 const TopPage = ({ firstCategory, page, products }: ITopPageProps) => {
 	return (
-		<TopPageComponent
-			firstCategory={firstCategory}
-			page={page}
-			products={products}
-		/>
+		<>
+			<Head>
+				<title>{page.metaTitle}</title>
+				<meta name="description" content={page.metaDescription} />
+				<meta name="og:title" content={page.metaTitle} />
+				<meta name="og:description" content={page.metaDescription} />
+				<meta name="og:type" content="article" />
+				<meta name="og:locale" content="ru_RU" />
+			</Head>
+			<TopPageComponent
+				firstCategory={firstCategory}
+				page={page}
+				products={products}
+			/>
+		</>
 	);
 };
 

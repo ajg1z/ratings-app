@@ -38,7 +38,7 @@ export const Header: React.FC<IHeaderProps> = ({ className, ...args }) => {
 	};
 
 	return (
-		<header className={cn(className, styles.container)} {...args}>
+		<header role="header" className={cn(className, styles.container)} {...args}>
 			<Logo />
 			<ButtonIcon
 				onClick={() => handleToggleMenu(true)}

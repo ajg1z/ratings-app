@@ -34,9 +34,9 @@ const Layout: React.FC<ILayoutProps> = ({ children }) => {
 			</a>
 			<Header className={styles.header} />
 			<Sidebar className={styles.sidebar} />
-			<div tabIndex={0} ref={bodyRef} className={styles.body}>
+			<main role="main" tabIndex={0} ref={bodyRef} className={styles.body}>
 				{children}
-			</div>
+			</main>
 			<Footer className={styles.footer} />
 			<Up />
 		</div>

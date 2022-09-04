@@ -5,11 +5,15 @@ import { IMenuItem } from "../../interfaces/menu.interface";
 import { TopLevelCategory } from "../../interfaces/top-page.interface";
 import { FirstLevelMenu } from "../../layout/Menu/Menu";
 import { API } from "../../helpers/api";
+import Head from "next/head";
 
 const TypeRoot = ({ firstCategory, menu }: ITypeRootProps) => {
 	return (
 		<>
-			<h1>TypeRoot ${firstCategory}</h1>
+			<Head>
+				<title>{firstCategory}</title>
+			</Head>
+			<h1>Выберите пункт меню</h1>
 		</>
 	);
 };
